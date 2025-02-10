@@ -15,19 +15,19 @@ let dates = [];
 // filling previous month dates
 for(let i = firstDayofCurrentMonth - 1; i >= 0; i--){
     // dates.push({date : lastDatePrevMonth - i, event : ""})
-    dates.push(lastDatePrevMonth - i)
+    dates.push(new Date(year, month, lastDatePrevMonth - i))
 }
 
 // filling current month dates
 for(let i = firstDateofCurrentMonth; i <= lastDateofCurrentMonth; i++){
     // dates.push({ date : i, event : ""})
-    dates.push(i)
+    dates.push(new Date(year, month, i))
 }
 
 // filling next months date
 let nextMonthDate = 1;
 for(let i = lastDayofCurrentMonth; i < 6; i++){
-    dates.push(nextMonthDate++)
+    dates.push(new Date(year, month + 1, nextMonthDate++))
     // dates.push({ date : nextMonthDate++, event : ""})
 }
 
@@ -40,8 +40,6 @@ function formatCalendar(dates) {
     return weeks;
 }
 
-// Call the function
-let weeks = formatCalendar(dates);
-console.log(weeks)
+// dates = formatCalendar(dates)
 
-
+dates.forEach(day => console.log(typeof day.getDate()))
